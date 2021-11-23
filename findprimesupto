@@ -1,0 +1,33 @@
+#a program to find all of the primes up to a given number. based of sieve of eratosthene's algorythm
+
+def findPrimesUpTo(n):
+
+  #first, create and fill an array with all numbers up to given number n. 0 and 1 are not prime,
+  # so they are disregarded
+  primearray = []
+  for i in range(2, n+1):
+    primearray.append(i)
+  
+  #creating a duplicate that will remove nonprimes iteratively
+  primearray2 = primearray
+  
+  #because the highest possible root of a number is its square root, and the highest possible
+  #number that can be prime in the array is n, create an float with the value of sqrt(n), converted
+  #into an int
+  highest = int(floor(sqrt(n)))
+  
+  #run through the array of numbers 2 to n+1, checking to see if the value in the array 2 to sqrt(n)
+  #is a factor AND not the number itself, meaning the number is composite
+  for i in range(2, n+1):
+    for j in range(2,highest):
+      if i % j == 0 and i != j:
+        if i in primearray2:
+          primearray2.remove(i)
+  print primearray2
+  
+  
+#tester function  
+def test():
+  primes(50)
+  primes(100)
+  primes(101)
