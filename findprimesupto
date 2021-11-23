@@ -1,0 +1,18 @@
+def primes(n):
+  primearray = []
+  for i in range(2, n+1):
+    primearray.append(i)
+  #print primearray
+  primearray2 = primearray
+  highest = int(floor(sqrt(n)))
+  for i in range(2, n+1):
+    for j in range(2,highest):
+      if i % j == 0 and i != j:
+        if i in primearray2:
+          primearray2.remove(i)
+  print primearray2
+  
+def test():
+  primes(50)
+  primes(100)
+  primes(101)
